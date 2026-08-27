@@ -9,7 +9,7 @@ def tot(p,k): return sum(q for q,_ in p[k])
 # ---- matchup ordering: current-meta first, then Grid-B-only (pre-ban) ----
 ORDER=["Izzet Prowess","Jeskai Lessons Control","4c Control","Izzet Spellementals","Izzet Lessons",
 "Mono-Green Landfall","Selesnya Landfall","Selesnya Practiced Offense","Dimir Excruciator (mirror)",
-"Azorius Momo","Azorius Tempo","Golgari Midrange","Mardu Discard","Kona Combo","4c/5c Elementals","Bant Rhythm"]
+"Azorius Momo","Azorius Tempo","Golgari Midrange","Mardu Discard","Kona Combo","4c/5c Elementals","Bant Rhythm","WBR","Boros Aggro"]
 # Grid B matchup -> Grid A section it belongs under (pre-ban plans shown as historical context)
 BMAP={"Izzet Lessons":"Izzet Lessons","Jeskai Control":"Jeskai Lessons Control","Landfall":"Mono-Green Landfall",
 "Mono Red":None,"Dimir Midrange":"Dimir Excruciator (mirror)","Izzet Spellementals":"Izzet Spellementals",
@@ -29,9 +29,11 @@ def sect_for(name):
     if 'azorius tempo' in n or 'uw tempo' in n: return "Azorius Tempo"
     if '4c control' in n or 'four-color control' in n: return "4c Control"
     if 'momo' in n: return "Azorius Momo"
-    if 'mardu' in n: return "Mardu Discard"
     if 'kona' in n: return "Kona Combo"
-    if 'rhythm' in n or 'airbend' in n: return "Bant Rhythm"
+    if 'golgari' in n: return "Golgari Midrange"
+    if n.strip().startswith('wbr') or 'mardu' in n: return "WBR"
+    if 'boros' in n: return "Boros Aggro"
+    if 'bant rhythm' in n: return "Bant Rhythm"
     return None
 
 AUTH={'you-a':('#6ab0d4','Your grid &mdash; current'),
